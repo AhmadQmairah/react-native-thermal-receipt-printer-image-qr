@@ -17,7 +17,7 @@ import com.pinmi.react.printer.adapter.PrinterAdapter;
  * Created by xiesubin on 2017/9/22.
  */
 
-public class OLDRNNetPrinterModule extends ReactContextBaseJavaModule implements RNPrinterModule {
+public class OLDRNNetPrinterModule extends ReactContextBaseJavaModule implements OLDRNPrinterModule {
 
     private PrinterAdapter adapter;
     private ReactApplicationContext reactContext;

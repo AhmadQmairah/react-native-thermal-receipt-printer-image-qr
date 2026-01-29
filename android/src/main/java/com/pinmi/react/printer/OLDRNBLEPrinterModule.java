@@ -23,7 +23,7 @@ import java.util.List;
  * Created by xiesubin on 2017/9/22.
  */
 
-public class OLDRNBLEPrinterModule extends ReactContextBaseJavaModule implements RNPrinterModule {
+public class OLDRNBLEPrinterModule extends ReactContextBaseJavaModule implements OLDRNPrinterModule {
 
     protected ReactApplicationContext reactContext;
 

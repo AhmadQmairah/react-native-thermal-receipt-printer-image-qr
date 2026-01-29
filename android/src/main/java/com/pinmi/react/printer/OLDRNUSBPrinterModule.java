@@ -21,7 +21,7 @@ import java.util.List;
  * Created by xiesubin on 2017/9/22.
  */
 
-public class OLDRNUSBPrinterModule extends ReactContextBaseJavaModule implements RNPrinterModule {
+public class OLDRNUSBPrinterModule extends ReactContextBaseJavaModule implements OLDRNPrinterModule {
 
     protected ReactApplicationContext reactContext;
 
