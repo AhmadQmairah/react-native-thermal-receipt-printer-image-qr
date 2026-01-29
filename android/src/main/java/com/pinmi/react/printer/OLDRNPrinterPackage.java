@@ -17,9 +17,9 @@ public class OLDRNPrinterPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.asList(new NativeModule[]{
-                new RNUSBPrinterModule(reactContext),
-                new RNBLEPrinterModule(reactContext),
-                new RNNetPrinterModule(reactContext),
+                new OLDRNUSBPrinterModule(reactContext),
+                new OLDRNBLEPrinterModule(reactContext),
+                new OLDRNNetPrinterModule(reactContext),
         });
     }
 
