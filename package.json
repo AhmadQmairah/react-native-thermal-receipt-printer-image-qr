@@ -18,7 +18,6 @@
   "files": [
     "dist",
     "android",
-    "ios",
     "react-native-thermal-receipt-printer-image-qr.podspec"
   ],
   "keywords": [
