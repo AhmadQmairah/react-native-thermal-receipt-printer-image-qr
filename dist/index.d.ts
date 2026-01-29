@@ -38,7 +38,7 @@ export declare enum ColumnAlignment {
   CENTER = 1,
   RIGHT = 2,
 }
-declare const USBPrinter: {
+declare const OLDUSBPrinter: {
   init: () => Promise<void>;
   getDeviceList: () => Promise<IUSBPrinter[]>;
   connectPrinter: (vendorId: string, productId: string) => Promise<IUSBPrinter>;
@@ -72,10 +72,10 @@ declare const USBPrinter: {
     columnWidth: number[],
     columnAlignment: ColumnAlignment[],
     columnStyle: string[],
-    opts?: PrinterOptions
+    opts?: PrinterOptions,
   ) => void;
 };
-declare const BLEPrinter: {
+declare const OLDBLEPrinter: {
   init: () => Promise<void>;
   getDeviceList: () => Promise<IBLEPrinter[]>;
   connectPrinter: (inner_mac_address: string) => Promise<IBLEPrinter>;
@@ -109,16 +109,16 @@ declare const BLEPrinter: {
     columnWidth: number[],
     columnAlignment: ColumnAlignment[],
     columnStyle: string[],
-    opts?: PrinterOptions
+    opts?: PrinterOptions,
   ) => void;
 };
-declare const NetPrinter: {
+declare const OLDNetPrinter: {
   init: () => Promise<void>;
   getDeviceList: () => Promise<INetPrinter[]>;
   connectPrinter: (
     host: string,
     port: number,
-    timeout?: number | undefined
+    timeout?: number | undefined,
   ) => Promise<INetPrinter>;
   closeConn: () => Promise<void>;
   printText: (text: string, opts?: {}) => void;
@@ -150,11 +150,17 @@ declare const NetPrinter: {
     columnWidth: number[],
     columnAlignment: ColumnAlignment[],
     columnStyle?: string[],
-    opts?: PrinterOptions
+    opts?: PrinterOptions,
   ) => void;
 };
 declare const NetPrinterEventEmitter: NativeEventEmitter;
-export { COMMANDS, NetPrinter, BLEPrinter, USBPrinter, NetPrinterEventEmitter };
+export {
+  COMMANDS,
+  OLDNetPrinter,
+  OLDBLEPrinter,
+  OLDUSBPrinter,
+  NetPrinterEventEmitter,
+};
 export declare enum RN_THERMAL_RECEIPT_PRINTER_EVENTS {
   EVENT_NET_PRINTER_SCANNED_SUCCESS = "scannerResolved",
   EVENT_NET_PRINTER_SCANNING = "scannerRunning",
