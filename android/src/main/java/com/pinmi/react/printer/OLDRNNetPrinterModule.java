@@ -17,12 +17,12 @@ import com.pinmi.react.printer.adapter.PrinterAdapter;
  * Created by xiesubin on 2017/9/22.
  */
 
-public class RNNetPrinterModule extends ReactContextBaseJavaModule implements RNPrinterModule {
+public class OLDRNNetPrinterModule extends ReactContextBaseJavaModule implements RNPrinterModule {
 
     private PrinterAdapter adapter;
     private ReactApplicationContext reactContext;
 
-    public RNNetPrinterModule(ReactApplicationContext reactContext) {
+    public OLDRNNetPrinterModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
@@ -85,6 +85,6 @@ public class RNNetPrinterModule extends ReactContextBaseJavaModule implements RN
 
     @Override
     public String getName() {
-        return "RNNetPrinter";
+        return "OLDRNNetPrinter";
     }
 }

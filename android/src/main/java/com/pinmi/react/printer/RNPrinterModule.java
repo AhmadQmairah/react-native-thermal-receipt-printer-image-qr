@@ -6,7 +6,7 @@ import com.facebook.react.bridge.ReactMethod;
  * Created by xiesubin on 2017/9/21.
  */
 
-public interface RNPrinterModule {
+public interface OLDRNPrinterModule {
 
     public void init(Callback successCallback, Callback errorCallback);
 
