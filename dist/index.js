@@ -86,8 +86,8 @@ var __generator =
                 op[0] & 2
                   ? y["return"]
                   : op[0]
-                  ? y["throw"] || ((t = y["return"]) && t.call(y), 0)
-                  : y.next) &&
+                    ? y["throw"] || ((t = y["return"]) && t.call(y), 0)
+                    : y.next) &&
               !(t = t.call(y, op[1])).done)
           )
             return t;
@@ -151,9 +151,9 @@ import * as EPToolkit from "./utils/EPToolkit";
 import { processColumnText } from "./utils/print-column";
 import { COMMANDS } from "./utils/printer-commands";
 import { connectToHost } from "./utils/net-connect";
-var RNUSBPrinter = NativeModules.RNUSBPrinter;
-var RNBLEPrinter = NativeModules.RNBLEPrinter;
-var RNNetPrinter = NativeModules.RNNetPrinter;
+var RNUSBPrinter = NativeModules.OLDRNUSBPrinter;
+var RNBLEPrinter = NativeModules.OLDRNBLEPrinter;
+var RNNetPrinter = NativeModules.OLDRNNetPrinter;
 export var PrinterWidth;
 (function (PrinterWidth) {
   PrinterWidth[(PrinterWidth["58mm"] = 58)] = "58mm";
@@ -215,7 +215,7 @@ var textPreprocessingIOS = function (text, canCut, beep) {
 //   const buffer = await EPToolkit.exchange_image(imagePath, threshold);
 //   return buffer.toString("base64");
 // };
-var USBPrinter = {
+var OLDUSBPrinter = {
   init: function () {
     return new Promise(function (resolve, reject) {
       return RNUSBPrinter.init(
@@ -224,7 +224,7 @@ var USBPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -236,7 +236,7 @@ var USBPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -250,7 +250,7 @@ var USBPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -268,7 +268,7 @@ var USBPrinter = {
       textTo64Buffer(text, opts),
       function (error) {
         return console.warn(error);
-      }
+      },
     );
   },
   printBill: function (text, opts) {
@@ -279,7 +279,7 @@ var USBPrinter = {
       billTo64Buffer(text, opts),
       function (error) {
         return console.warn(error);
-      }
+      },
     );
   },
   /**
@@ -309,7 +309,7 @@ var USBPrinter = {
           : 0,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     }
   },
@@ -340,7 +340,7 @@ var USBPrinter = {
           : 0,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     }
   },
@@ -366,7 +366,7 @@ var USBPrinter = {
     columnWidth,
     columnAlignment,
     columnStyle,
-    opts
+    opts,
   ) {
     if (opts === void 0) {
       opts = {};
@@ -375,14 +375,14 @@ var USBPrinter = {
       texts,
       columnWidth,
       columnAlignment,
-      columnStyle
+      columnStyle,
     );
     RNUSBPrinter.printRawData(textTo64Buffer(result, opts), function (error) {
       return console.warn(error);
     });
   },
 };
-var BLEPrinter = {
+var OLDBLEPrinter = {
   init: function () {
     return new Promise(function (resolve, reject) {
       return RNBLEPrinter.init(
@@ -391,7 +391,7 @@ var BLEPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -403,7 +403,7 @@ var BLEPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -416,7 +416,7 @@ var BLEPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -437,7 +437,7 @@ var BLEPrinter = {
         processedText.opts,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     } else {
       RNBLEPrinter.printRawData(textTo64Buffer(text, opts), function (error) {
@@ -457,14 +457,14 @@ var BLEPrinter = {
           _a !== void 0
           ? _a
           : true,
-        (_b = opts.beep) !== null && _b !== void 0 ? _b : true
+        (_b = opts.beep) !== null && _b !== void 0 ? _b : true,
       );
       RNBLEPrinter.printRawData(
         processedText.text,
         processedText.opts,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     } else {
       RNBLEPrinter.printRawData(billTo64Buffer(text, opts), function (error) {
@@ -502,7 +502,7 @@ var BLEPrinter = {
           : 0,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     }
   },
@@ -539,7 +539,7 @@ var BLEPrinter = {
           : 0,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     }
   },
@@ -556,7 +556,7 @@ var BLEPrinter = {
         processedText.opts,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     } else {
       RNBLEPrinter.printRawData(text, function (error) {
@@ -574,7 +574,7 @@ var BLEPrinter = {
     columnWidth,
     columnAlignment,
     columnStyle,
-    opts
+    opts,
   ) {
     if (opts === void 0) {
       opts = {};
@@ -583,7 +583,7 @@ var BLEPrinter = {
       texts,
       columnWidth,
       columnAlignment,
-      columnStyle
+      columnStyle,
     );
     if (Platform.OS === "ios") {
       var processedText = textPreprocessingIOS(result, false, false);
@@ -592,7 +592,7 @@ var BLEPrinter = {
         processedText.opts,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     } else {
       RNBLEPrinter.printRawData(textTo64Buffer(result, opts), function (error) {
@@ -601,7 +601,7 @@ var BLEPrinter = {
     }
   },
 };
-var NetPrinter = {
+var OLDNetPrinter = {
   init: function () {
     return new Promise(function (resolve, reject) {
       return RNNetPrinter.init(
@@ -610,7 +610,7 @@ var NetPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -622,7 +622,7 @@ var NetPrinter = {
         },
         function (error) {
           return reject(error);
-        }
+        },
       );
     });
   },
@@ -645,7 +645,7 @@ var NetPrinter = {
                 },
                 function (error) {
                   return reject(error);
-                }
+                },
               );
               return [3 /*break*/, 3];
             case 2:
@@ -653,7 +653,7 @@ var NetPrinter = {
               reject(
                 (error_1 === null || error_1 === void 0
                   ? void 0
-                  : error_1.message) || "Connect to ".concat(host, " fail")
+                  : error_1.message) || "Connect to ".concat(host, " fail"),
               );
               return [3 /*break*/, 3];
             case 3:
@@ -680,7 +680,7 @@ var NetPrinter = {
         processedText.opts,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     } else {
       RNNetPrinter.printRawData(textTo64Buffer(text, opts), function (error) {
@@ -700,14 +700,14 @@ var NetPrinter = {
           _a !== void 0
           ? _a
           : true,
-        (_b = opts.beep) !== null && _b !== void 0 ? _b : true
+        (_b = opts.beep) !== null && _b !== void 0 ? _b : true,
       );
       RNNetPrinter.printRawData(
         processedText.text,
         processedText.opts,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     } else {
       RNNetPrinter.printRawData(billTo64Buffer(text, opts), function (error) {
@@ -742,7 +742,7 @@ var NetPrinter = {
           : 0,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     }
   },
@@ -773,7 +773,7 @@ var NetPrinter = {
           : 0,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     }
   },
@@ -799,7 +799,7 @@ var NetPrinter = {
     columnWidth,
     columnAlignment,
     columnStyle,
-    opts
+    opts,
   ) {
     if (columnStyle === void 0) {
       columnStyle = [];
@@ -811,7 +811,7 @@ var NetPrinter = {
       texts,
       columnWidth,
       columnAlignment,
-      columnStyle
+      columnStyle,
     );
     if (Platform.OS === "ios") {
       var processedText = textPreprocessingIOS(result, false, false);
@@ -820,7 +820,7 @@ var NetPrinter = {
         processedText.opts,
         function (error) {
           return console.warn(error);
-        }
+        },
       );
     } else {
       RNNetPrinter.printRawData(textTo64Buffer(result, opts), function (error) {
@@ -833,7 +833,13 @@ var NetPrinterEventEmitter =
   Platform.OS === "ios"
     ? new NativeEventEmitter(RNNetPrinter)
     : new NativeEventEmitter();
-export { COMMANDS, NetPrinter, BLEPrinter, USBPrinter, NetPrinterEventEmitter };
+export {
+  COMMANDS,
+  OLDNetPrinter,
+  OLDBLEPrinter,
+  OLDUSBPrinter,
+  NetPrinterEventEmitter,
+};
 export var RN_THERMAL_RECEIPT_PRINTER_EVENTS;
 (function (RN_THERMAL_RECEIPT_PRINTER_EVENTS) {
   RN_THERMAL_RECEIPT_PRINTER_EVENTS["EVENT_NET_PRINTER_SCANNED_SUCCESS"] =
@@ -843,5 +849,5 @@ export var RN_THERMAL_RECEIPT_PRINTER_EVENTS;
   RN_THERMAL_RECEIPT_PRINTER_EVENTS["EVENT_NET_PRINTER_SCANNED_ERROR"] =
     "registerError";
 })(
-  RN_THERMAL_RECEIPT_PRINTER_EVENTS || (RN_THERMAL_RECEIPT_PRINTER_EVENTS = {})
+  RN_THERMAL_RECEIPT_PRINTER_EVENTS || (RN_THERMAL_RECEIPT_PRINTER_EVENTS = {}),
 );
